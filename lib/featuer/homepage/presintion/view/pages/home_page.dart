@@ -1,12 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hstore/const/move.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
-import 'package:hstore/featuer/homepage/data/apiSerice.dart';
 import 'package:hstore/featuer/homepage/presintion/view/widget/adds.dart';
-
 import 'package:hstore/featuer/homepage/presintion/view/widget/prodect_card.dart';
-import 'package:hstore/featuer/search/presintion/view/pages/search.dart';
+import 'package:hstore/featuer/homepage/presintion/view_model/control.dart';
+import 'package:hstore/featuer/homepage/presintion/view_model/state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,7 +16,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocBuilder<ProdectControl , ProdectState>(builder: (context , state){
+      return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
         child: Column(
@@ -34,21 +33,9 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 30),
             GestureDetector(
               onTap: () {
-                context.topage(Search());
-                Apiservice(dio: Dio())
-                    .getData()
-                    .then((value) {
-                      print(
-                        "objectttttttttttttttttttttttttttttttttttttttttttttttttt",
-                      );
-                      print(value[1]["title"]);
-                      print(
-                        "objectttttttttttttttttttttttttttttttttttttttttttttttttt",
-                      );
-                    })
-                    .catchError((error) {
-                      print("Error: $error");
-                    });
+                print("ppppppppppppppppppppppppppppp");
+             print(context.read<ProdectControl>().prodect.length);
+             print("ppppppppppppppppppppppppppppp");
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -75,5 +62,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+    });
   }
 }
