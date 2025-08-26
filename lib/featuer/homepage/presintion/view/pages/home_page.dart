@@ -26,22 +26,29 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("H Store" , style: styles.font22,) , 
+                Text("H Store", style: styles.font22),
                 SizedBox(),
-                Icon(Icons.shopping_cart_outlined)
+                Icon(Icons.shopping_cart_outlined),
               ],
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 30),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 context.topage(Search());
-                Apiservice(dio: Dio()).getData().then((value) {
-                  print("objectttttttttttttttttttttttttttttttttttttttttttttttttt");
-                  print(value[1]["title"]);
-                  print("objectttttttttttttttttttttttttttttttttttttttttttttttttt");
-                }).catchError((error) {
-                  print("Error: $error");
-                });
+                Apiservice(dio: Dio())
+                    .getData()
+                    .then((value) {
+                      print(
+                        "objectttttttttttttttttttttttttttttttttttttttttttttttttt",
+                      );
+                      print(value[1]["title"]);
+                      print(
+                        "objectttttttttttttttttttttttttttttttttttttttttttttttttt",
+                      );
+                    })
+                    .catchError((error) {
+                      print("Error: $error");
+                    });
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -61,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: 20),
-           SizedBox(height: 120,child: FullScreenAdSlider()),
+            SizedBox(height: 120, child: FullScreenAdSlider()),
             SizedBox(height: 20),
             ProdectCard(),
           ],

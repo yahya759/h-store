@@ -28,7 +28,7 @@ class ShowProdect extends StatelessWidget {
                 color: Colors.grey.withOpacity(.20),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Image.asset("images/add_phone.png" , fit:BoxFit.cover,),
+              child: Image.asset("images/add_phone.png", fit: BoxFit.cover),
             ),
             SizedBox(height: 20),
             Row(
@@ -59,10 +59,12 @@ class ShowProdect extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
-                child: Text("pay now" , style: styles.font18.copyWith(color: Colors.white), textAlign: TextAlign.center
-                            ),
+                child: Text(
+                  "pay now",
+                  style: styles.font18.copyWith(color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
               ),
-
             ),
           ],
         ),
