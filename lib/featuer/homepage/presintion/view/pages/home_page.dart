@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
+import 'package:hstore/featuer/homepage/data/models/prodect/prodect.dart';
 import 'package:hstore/featuer/homepage/presintion/view/widget/adds.dart';
 import 'package:hstore/featuer/homepage/presintion/view/widget/prodect_card.dart';
 import 'package:hstore/featuer/homepage/presintion/view_model/control.dart';
@@ -16,52 +17,64 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProdectControl , ProdectState>(builder: (context , state){
-      return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<ProdectControl, ProdectState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
+            child: Column(
               children: [
-                Text("H Store", style: styles.font22),
-                SizedBox(),
-                Icon(Icons.shopping_cart_outlined),
-              ],
-            ),
-            SizedBox(height: 30),
-            GestureDetector(
-              onTap: () {
-                print("ppppppppppppppppppppppppppppp");
-             print(context.read<ProdectControl>().prodect.length);
-             print("ppppppppppppppppppppppppppppp");
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                width: MediaQuery.sizeOf(context).width,
-                height: 45,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200.withOpacity(.85),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.search, color: Colors.grey.shade600),
-                    SizedBox(width: 10),
-                    Text("Search for products", style: styles.font12),
+                    Text("H Store", style: styles.font22),
+                    SizedBox(),
+                    Icon(Icons.shopping_cart_outlined),
                   ],
                 ),
-              ),
+                SizedBox(height: 30),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    width: MediaQuery.sizeOf(context).width,
+                    height: 45,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                      color: Colors.grey.shade200.withOpacity(.85),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.search, color: Colors.grey.shade600),
+                        SizedBox(width: 10),
+                        Text("Search for products", style: styles.font12),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                SizedBox(height: 120, child: FullScreenAdSlider()),
+                SizedBox(height: 20),
+                state is SuccessState
+                    ? Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, index) {
+                            return ProdectCard(
+                              prodect: state.products,
+                              index: index,
+                            );
+                          },
+                          itemCount: state.products.length,
+                        ),
+                      )
+                    : Center(child: CircularProgressIndicator()),
+              ],
             ),
-            SizedBox(height: 20),
-            SizedBox(height: 120, child: FullScreenAdSlider()),
-            SizedBox(height: 20),
-            ProdectCard(),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
-    });
   }
 }

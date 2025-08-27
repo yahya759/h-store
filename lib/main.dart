@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hstore/const/botnavbar.dart';
 import 'package:hstore/featuer/homepage/presintion/view/pages/home_page.dart';
 import 'package:hstore/featuer/homepage/presintion/view_model/control.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomePage(),
+        home:  MyHomePage(),
       ),
     );
   }

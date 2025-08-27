@@ -60,7 +60,7 @@ class _FullScreenAdSliderState extends State<FullScreenAdSlider> {
               fit: BoxFit.cover, // تغطي الشاشة كاملة
             ),
             Container(
-              color: Colors.black.withOpacity(0.2), // فلتر خفيف
+              color: Colors.lightBlueAccent.withOpacity(0.2), // فلتر خفيف
               alignment: Alignment.bottomCenter,
               padding: EdgeInsets.all(16),
               child: Text(
