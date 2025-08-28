@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
 
 class ShowProdect extends StatelessWidget {
-  const ShowProdect({super.key});
+   ShowProdect({super.key , required this.image , required this.title , required this.discription , required this.price , required this.rate});
+
+  String image;
+  String title;
+  String discription;
+  dynamic  price;
+  dynamic  rate;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +22,11 @@ class ShowProdect extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(Icons.arrow_back_ios),
-                Text("jop detailes", style: styles.font20),
+                Text("jop detailes", style: styles.font18),
                 SizedBox(),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             Container(
               width: MediaQuery.sizeOf(context).width,
               height: 200,
@@ -28,17 +34,21 @@ class ShowProdect extends StatelessWidget {
                 color: Colors.grey.withOpacity(.20),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Image.asset("images/add_phone.png", fit: BoxFit.cover),
+              child: Image.network(image, fit: BoxFit.cover),
             ),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("the prodect name", style: styles.font20),
+                SizedBox(
+                  width: 200,
+                  child: Text(title, style: styles.font20 , overflow: TextOverflow.ellipsis,)),
 
                 Row(
                   children: [
-                    Text("2.6"),
+                    SizedBox(
+                      // width: 50,
+                      child: Text(rate.toString() ,)),
                     SizedBox(width: 5),
                     Icon(Icons.star, color: Colors.amber),
                   ],
@@ -46,10 +56,15 @@ class ShowProdect extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            Text(r"$14.6", style: styles.font18),
+            Text("\$${price.toString()}", style: styles.font18),
             SizedBox(height: 15),
-            Text("datails about the prodect", style: styles.font12),
-            Expanded(child: SizedBox()),
+            Expanded(
+              child: SizedBox(
+                child: Text(discription, style: styles.font12  ,),
+              ),
+            ),
+           
+            
             Container(
               margin: EdgeInsets.only(bottom: 20),
               width: MediaQuery.sizeOf(context).width,
@@ -60,7 +75,7 @@ class ShowProdect extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  "pay now",
+                  "Add to cart",
                   style: styles.font18.copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
