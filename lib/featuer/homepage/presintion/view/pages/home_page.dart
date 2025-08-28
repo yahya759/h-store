@@ -26,7 +26,13 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("H Store", style: styles.font22),
+                   Row(
+                    children: [
+                      Image.asset("images/letter-h.png" , width: 30 , height: 30,),
+                      SizedBox(width: 5,),
+                       Text("Store", style: styles.font22),
+                    ],
+                   ),
                     SizedBox(),
                     Icon(Icons.shopping_cart_outlined),
                   ],
