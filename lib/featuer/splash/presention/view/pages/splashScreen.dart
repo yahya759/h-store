@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hstore/const/botnavbar.dart';
+
+import 'package:hstore/featuer/login/presention/view/pages/loginpage.dart';
 
 
 
@@ -18,7 +19,7 @@ class _splashState extends State<splash> {
     super.initState();
     // code
     Timer(Duration(seconds: 3)
-        ,()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyHomePage())));
+        ,()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Loginpage())));
   }
   @override
   Widget build(BuildContext context) {
