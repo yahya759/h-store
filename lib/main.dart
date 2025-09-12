@@ -22,9 +22,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        // darkTheme: ThemeData(
+        //   brightness: Brightness.dark,
+        //   primarySwatch: Colors.blue,
+        //   ),
         home:  splash(),
       ),
     );

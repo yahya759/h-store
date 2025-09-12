@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hstore/const/botnavbar.dart';
 import 'package:hstore/const/move.dart';
-import 'package:hstore/const/textstyle/textstyle.dart';
-
 import 'package:hstore/featuer/login/presention/view/widget/logo_login.dart';
+import 'package:hstore/featuer/regester/presention/view/pages/sigup.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -94,7 +93,9 @@ class _LoginpageState extends State<Loginpage> {
                       // color: Colors.deepOrange,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(child: Text("Sign Up" , style: TextStyle(fontWeight: FontWeight.bold),),
+                    child: Center(child: GestureDetector(onTap: (){
+                      context.topage(Sigup());
+                    },child: Text("Sign Up" , style: TextStyle(fontWeight: FontWeight.bold),)),
                   ),
                   )
                 ),

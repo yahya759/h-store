@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hstore/const/move.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
 import 'package:hstore/featuer/homepage/presintion/view/widget/adds.dart';
 import 'package:hstore/featuer/homepage/presintion/view/widget/prodect_card.dart';
 import 'package:hstore/featuer/homepage/presintion/view_model/control.dart';
 import 'package:hstore/featuer/homepage/presintion/view_model/state.dart';
+import 'package:hstore/featuer/search/presintion/view/pages/search.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,19 +41,21 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: 30),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.topage(Search());
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     width: MediaQuery.sizeOf(context).width,
                     height: 45,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade300),
-                      color: Colors.grey.shade200.withOpacity(.85),
+                      color: Colors.grey,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.search, color: Colors.grey.shade600),
+                        Icon(Icons.search, color: Colors.white),
                         SizedBox(width: 10),
                         Text("Search for products", style: styles.font12),
                       ],

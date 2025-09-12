@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hstore/featuer/homepage/presintion/view/pages/home_page.dart';
+import 'package:hstore/featuer/search/presintion/view/pages/search.dart';
+import 'package:hstore/featuer/setting/prisention/view/pages/setting.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -12,9 +14,9 @@ class _MyHomePageState extends State<MyHomePage> {
   // هنا ضفت ليست بالواجهات (كل واجهة Widget مستقل)
   final List<Widget> _pages = <Widget>[
     HomePage(),
-    Center(child: Text('Search Page', style: TextStyle(fontSize: 24))),
+    Search(),
     Center(child: Text('Notifications Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Profile Page', style: TextStyle(fontSize: 24))),
+  SettingsPage()
   ];
 
   void _onItemTapped(int index) {
