@@ -15,3 +15,8 @@ class FailureState extends ProdectState {
   final String message;
   FailureState(this.message);
 }
+
+class SearchState extends ProdectState {
+ List<Prodect> prodect;
+ SearchState(this.prodect);
+}

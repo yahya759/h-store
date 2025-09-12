@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
+import 'package:hstore/featuer/homepage/data/models/prodect/prodect.dart';
+import 'package:hstore/featuer/homepage/presintion/view_model/control.dart';
+import 'package:hstore/featuer/homepage/presintion/view_model/state.dart';
 import 'package:hstore/featuer/search/presintion/view/wedgit/searchCard.dart';
 
 class Search extends StatefulWidget {
@@ -12,7 +16,10 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    
+    return BlocBuilder<ProdectControl , ProdectState>(builder: (context , state){
+      List<Prodect> prodect = [];
+      return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 60 , left: 20 , right: 20),
         child: Expanded(
@@ -22,15 +29,22 @@ class _SearchState extends State<Search> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(onTap: (){Navigator.pop(context);},child: Icon(Icons.arrow_back_ios)),
-                  Text("Setting" , style: styles.font18,),
+                  Text("Search" , style: styles.font18,),
                   SizedBox()
                 ],
               ),
               SizedBox(height: 30,),
               TextFormField(
+                onChanged: (value) {
+                  context.read<ProdectControl>().searchProducts(value.toString());
+                  state is SearchState ? prodect = state.prodect : print("fialer"); 
+                  
+                  print(prodect.length);
+                },
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.password_rounded),
-                  suffixIcon: Icon(Icons.abc_sharp),
+                  label: Text("product name"),
+                  prefixIcon: Icon(Icons.search),
+                  
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -39,10 +53,10 @@ class _SearchState extends State<Search> {
               SizedBox(height: 30,),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 12,
+                  itemCount: context.read<ProdectControl>().filteredProducts.length,
                   padding: EdgeInsets.zero,
                   itemBuilder: (context , indext){
-                  return Searchcard();
+                  return Searchcard(prodect: context.read<ProdectControl>().filteredProducts,index: indext,);
                 }),
               )
               
@@ -51,5 +65,6 @@ class _SearchState extends State<Search> {
         ),
       ),
     );
+    });
   }
 }

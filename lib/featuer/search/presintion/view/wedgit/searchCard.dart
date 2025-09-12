@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
+import 'package:hstore/featuer/homepage/data/models/prodect/prodect.dart';
 
 class Searchcard extends StatelessWidget {
-  const Searchcard({super.key});
+   Searchcard({super.key , required this.prodect , required this.index});
+
+ List<Prodect> prodect = [];
+ int index;
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +23,14 @@ class Searchcard extends StatelessWidget {
                   color: Colors.grey.withOpacity(.25),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Image.asset("images/add_phone.png", fit: BoxFit.cover),
+                child: Image.asset("${prodect[index].image}", fit: BoxFit.cover),
               ),
               SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Title", style: styles.font22),
-                  Text("discraption", style: styles.font12),
+                  Text("${prodect[index].title}", style: styles.font22),
+                  Text("${prodect[index].description}", style: styles.font12),
                 ],
               ),
              
