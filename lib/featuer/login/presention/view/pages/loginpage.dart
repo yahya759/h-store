@@ -11,6 +11,9 @@ class Loginpage extends StatefulWidget {
   State<Loginpage> createState() => _LoginpageState();
 }
 
+String? email;
+String? password;
+
 class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,9 @@ class _LoginpageState extends State<Loginpage> {
             ),
             SizedBox(height: 20),
             TextFormField(
+              onChanged: (value) {
+                email = value;
+              },
               decoration: InputDecoration(
                 label: Text("Email"),
                 // prefixIcon: Icon(Icons.password_rounded),
@@ -38,6 +44,9 @@ class _LoginpageState extends State<Loginpage> {
             ),
             SizedBox(height: 15),
             TextFormField(
+              onChanged: (value) {
+                password = value;
+              },
               decoration: InputDecoration(
                 label: Text("Password"),
                 // prefixIcon: Icon(Icons.password_rounded),
@@ -49,8 +58,25 @@ class _LoginpageState extends State<Loginpage> {
             ),
             SizedBox(height: 60),
             GestureDetector(
-              onTap: (){
-                context.topage(MyHomePage());
+              onTap: () {
+                if (email == "admin" && password == "123") {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Login Successfully"),
+                      duration: Duration(seconds: 2),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                  context.topage(MyHomePage());
+                }else{
+                  ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Login failed"),
+                    duration: Duration(seconds: 2),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+                }
               },
               child: Container(
                 width: MediaQuery.sizeOf(context).width,
@@ -82,7 +108,12 @@ class _LoginpageState extends State<Loginpage> {
                       color: Colors.grey.shade300.withOpacity(.6),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(child: Text("Forgot Password?" , style: TextStyle(fontWeight: FontWeight.bold),),),
+                    child: Center(
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -93,11 +124,18 @@ class _LoginpageState extends State<Loginpage> {
                       // color: Colors.deepOrange,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(child: GestureDetector(onTap: (){
-                      context.topage(Sigup());
-                    },child: Text("Sign Up" , style: TextStyle(fontWeight: FontWeight.bold),)),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          context.topage(Sigup());
+                        },
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
                   ),
-                  )
                 ),
               ],
             ),

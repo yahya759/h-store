@@ -40,12 +40,12 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
+            icon: Icon(Icons.notifications_none),
+            label: 'notification',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Profile',
+            icon: Icon(Icons.settings),
+            label: 'setting',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ShowProdect extends StatelessWidget {
    ShowProdect({super.key , required this.image , required this.title , required this.discription , required this.price , required this.rate});
@@ -65,19 +66,29 @@ class ShowProdect extends StatelessWidget {
             ),
            
             
-            Container(
-              margin: EdgeInsets.only(bottom: 20),
-              width: MediaQuery.sizeOf(context).width,
-              height: 45,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: Text(
-                  "Add to cart",
-                  style: styles.font18.copyWith(color: Colors.white),
-                  textAlign: TextAlign.center,
+            GestureDetector(
+              onTap: ()async{
+                final url = Uri.parse("https://www.paypal.com/fr/home");
+                 if (await canLaunchUrl(url)) {
+                await launchUrl(url, mode:LaunchMode.externalApplication,);
+              } else {
+                throw "ما قدرت أفتح الرابط";
+              }
+              },
+              child: Container(
+                margin: EdgeInsets.only(bottom: 20),
+                width: MediaQuery.sizeOf(context).width,
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Text(
+                    "Buy now",
+                    style: styles.font18.copyWith(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),
