@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hstore/featuer/homepage/presintion/view/pages/home_page.dart';
+import 'package:hstore/featuer/notfy/presention/view/pages/notfy.dart';
 import 'package:hstore/featuer/search/presintion/view/pages/search.dart';
 import 'package:hstore/featuer/setting/prisention/view/pages/setting.dart';
 
@@ -15,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = <Widget>[
     HomePage(),
     Search(),
-    Center(child: Text('Notifications Page', style: TextStyle(fontSize: 24))),
+    Notfy(),
   SettingsPage()
   ];
 
