@@ -23,7 +23,7 @@ class ShowProdect extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(Icons.arrow_back_ios),
-                Text("jop detailes", style: styles.font18),
+                Text("prodect detailes", style: styles.font18),
                 SizedBox(),
               ],
             ),

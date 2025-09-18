@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hstore/const/move.dart';
 import 'package:hstore/const/textstyle/textstyle.dart';
+import 'package:hstore/featuer/login/presention/view/pages/loginpage.dart';
+import 'package:hstore/featuer/notfy/presention/view/pages/notfy.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -49,6 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     title: Text("Notification"),
                     trailing: Icon(Icons.arrow_forward_ios, size: 16),
                     onTap: () {
+                      context.topage(Notfy());
                       // Navigate to Notification settings
                     },
                   ),
@@ -80,7 +84,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     value: isDarkMode,
                     onChanged: (val) {
                       setState(() {
-                        isDarkMode = val;
+                      isDarkMode = val;
                       });
                     },
                   ),
@@ -91,6 +95,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     title: Text("Logout"),
                     onTap: () {
                       // Logout logic
+                      context.topage(Loginpage());
                     },
                   ),
                 ],
