@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hstore/const/botnavbar.dart';
 import 'package:hstore/const/move.dart';
 import 'package:hstore/featuer/login/presention/view/widget/logo_login.dart';
+import 'package:hstore/featuer/login/presention/view_model/control/cubitlogin.dart';
+import 'package:hstore/featuer/login/presention/view_model/control/statelogin.dart';
 import 'package:hstore/featuer/regester/presention/view/pages/sigup.dart';
 
 class Loginpage extends StatefulWidget {
@@ -17,7 +20,8 @@ String? password;
 class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocBuilder<logincontrol , loginstate>(builder: (context , State){
+      return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
         child: Column(
@@ -59,23 +63,16 @@ class _LoginpageState extends State<Loginpage> {
             SizedBox(height: 60),
             GestureDetector(
               onTap: () {
-                if (email == "admin" && password == "123") {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text("Login Successfully"),
-                      duration: Duration(seconds: 2),
-                      backgroundColor: Colors.green,
-                    ),
-                  );
+                // log in button
+                context.read<logincontrol>().login(email!, password!);
+                if(State is loginsecces){
                   context.topage(MyHomePage());
                 }else{
-                  ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Login failed"),
-                    duration: Duration(seconds: 2),
+                  final snackBar = SnackBar(
+                    content: Text('Email or password is incorrect'),
                     backgroundColor: Colors.red,
-                  ),
-                );
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
               },
               child: Container(
@@ -86,7 +83,7 @@ class _LoginpageState extends State<Loginpage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
-                  child: Text(
+                  child: loginstate is lod ? CircularProgressIndicator() :  Text(
                     "Log in",
                     style: TextStyle(
                       fontSize: 20,
@@ -143,5 +140,6 @@ class _LoginpageState extends State<Loginpage> {
         ),
       ),
     );
+    });
   }
 }
